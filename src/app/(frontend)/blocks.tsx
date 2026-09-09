@@ -24,7 +24,11 @@ export function YourJourney({ block }: { block: any }) {
         <div className="steps">
           {(block.steps ?? []).map((s: any, i: number) => (
             <div className="step" key={i}>
-              {img(s.icon) && <img src={img(s.icon)} alt="" />}
+              {img(s.icon) && (
+                <div className="icon_wrap">
+                  <img src={img(s.icon)} alt="" />
+                </div>
+              )}
               <h3>{s.title}</h3>
               <p>{s.description}</p>
             </div>

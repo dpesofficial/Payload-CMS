@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4FBEF9"/>
+      <stop offset="1" stop-color="#0B76C6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="128" cy="128" r="128" fill="#EFF6FB"/>
+  <!-- tape blade -->
+  <path d="M56 106h96v30H56a6 6 0 0 1-6-6v-18a6 6 0 0 1 6-6Z" fill="#FFFFFF" stroke="#9CD5F7" stroke-width="6"/>
+  <g stroke="#9CD5F7" stroke-width="5" stroke-linecap="round">
+    <path d="M70 106v13M86 106v9M102 106v13M118 106v9M134 106v13"/>
+  </g>
+  <!-- tape case -->
+  <path d="M150 82h40a18 18 0 0 1 18 18v40a18 18 0 0 1-18 18h-40a18 18 0 0 1-18-18v-40a18 18 0 0 1 18-18Z" fill="url(#g)"/>
+  <circle cx="170" cy="120" r="20" fill="#EFF6FB"/>
+  <circle cx="170" cy="120" r="9" fill="url(#g)"/>
+  <!-- measure arrow -->
+  <g stroke="#4FBEF9" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M56 176h144"/>
+    <path d="m68 166-12 10 12 10M188 166l12 10-12 10"/>
+  </g>
+</svg>
