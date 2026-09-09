@@ -1,0 +1,173 @@
+{
+    "settings": {
+        "_logo": {
+            "wpId": 3174,
+            "file": "C:/laragon/www/titan/wp-content/uploads/2026/04/white-logo.svg",
+            "remote": "https://titanshutters.com.au/wp-content/uploads/2026/04/white-logo.svg",
+            "name": "white-logo.svg",
+            "alt": ""
+        },
+        "phone": "1300 020 001"
+    },
+    "source": "http://titan.test",
+    "wpId": 9,
+    "title": "Home",
+    "slug": "home",
+    "skipped": [
+        "infinite_scroll",
+        "get_inspired",
+        "book_now"
+    ],
+    "layout": [
+        {
+            "blockType": "banner",
+            "slides": [
+                {
+                    "title": "Roller shutters",
+                    "subtitle": "Style meets security and functionality",
+                    "_image": {
+                        "wpId": 1128,
+                        "file": null,
+                        "remote": "https://titanshutters.com.au/wp-content/uploads/2024/08/Premium-roller-shutters.jpg",
+                        "name": "Premium-roller-shutters.jpg",
+                        "alt": ""
+                    },
+                    "enquire": {
+                        "label": "Enquire now",
+                        "url": "#enquire-form"
+                    },
+                    "learnMore": {
+                        "label": "Learn more",
+                        "url": "/roller-shutters/"
+                    }
+                },
+                {
+                    "title": "Design consult",
+                    "subtitle": "Book your free consult with a shutter expert",
+                    "_image": {
+                        "wpId": 1899,
+                        "file": null,
+                        "remote": "https://titanshutters.com.au/wp-content/uploads/2024/09/home-banner-design-consult.jpg",
+                        "name": "home-banner-design-consult.jpg",
+                        "alt": ""
+                    },
+                    "enquire": {
+                        "label": "Book now",
+                        "url": "/book-now/"
+                    },
+                    "learnMore": null
+                },
+                {
+                    "title": "Inspiration ",
+                    "subtitle": "Get inspired in our digital showroom",
+                    "_image": {
+                        "wpId": 1154,
+                        "file": null,
+                        "remote": "https://titanshutters.com.au/wp-content/uploads/2024/08/home_banner-scaled_inspiration.jpg",
+                        "name": "home_banner-scaled_inspiration.jpg",
+                        "alt": ""
+                    },
+                    "enquire": null,
+                    "learnMore": {
+                        "label": "View showroom",
+                        "url": "/inspiration/online-showroom/"
+                    }
+                }
+            ],
+            "_crests": [
+                {
+                    "wpId": 199,
+                    "file": null,
+                    "remote": "https://titanshutters.com.au/wp-content/uploads/2024/06/crest_builttough_white.svg",
+                    "name": "crest_builttough_white.svg",
+                    "alt": ""
+                },
+                {
+                    "wpId": 2039,
+                    "file": null,
+                    "remote": "https://titanshutters.com.au/wp-content/uploads/2024/09/Badge_Reviews_400_White-cropped.svg",
+                    "name": "Badge_Reviews_400_White-cropped.svg",
+                    "alt": ""
+                }
+            ]
+        },
+        {
+            "blockType": "yourJourney",
+            "title": "Your journey with us",
+            "subtitle": "",
+            "steps": [
+                {
+                    "title": "1. Get in touch",
+                    "description": "Call us, or enquire online, and we’ll help you determine which of our products are a good fit for your needs.",
+                    "_icon": null
+                },
+                {
+                    "title": "2. Free onsite consult",
+                    "description": "One of our design experts will assess your project, measure up, and provide product advice and pricing.",
+                    "_icon": null
+                },
+                {
+                    "title": "3. Made to order",
+                    "description": "Your products are manufactured right here in Melbourne, using high quality Aussie materials.",
+                    "_icon": null
+                },
+                {
+                    "title": "4. Expert installation",
+                    "description": "Our local installers will arrive at the scheduled time to expertly install your shutters or blinds.",
+                    "_icon": null
+                }
+            ]
+        },
+        {
+            "blockType": "twoColumn",
+            "rows": [
+                {
+                    "title": "Roller shutters",
+                    "content": "",
+                    "_image": {
+                        "wpId": 1139,
+                        "file": null,
+                        "remote": "https://titanshutters.com.au/wp-content/uploads/2024/08/Roller-shutters-monument1.jpg",
+                        "name": "Roller-shutters-monument1.jpg",
+                        "alt": ""
+                    },
+                    "imagePosition": "right",
+                    "cta": {
+                        "label": "Learn more",
+                        "url": "/roller-shutters/"
+                    }
+                },
+                {
+                    "title": "Outdoor blinds",
+                    "content": "",
+                    "_image": {
+                        "wpId": 1157,
+                        "file": null,
+                        "remote": "https://titanshutters.com.au/wp-content/uploads/2024/08/Outdoor-blinds-black-2.jpg",
+                        "name": "Outdoor-blinds-black-2.jpg",
+                        "alt": ""
+                    },
+                    "imagePosition": "left",
+                    "cta": {
+                        "label": "Learn more",
+                        "url": "/outdoor-blinds/"
+                    }
+                }
+            ]
+        },
+        {
+            "blockType": "googleReviews",
+            "title": "Join thousands of happy customers",
+            "description": "At Titan, we care about our customers – we’re not happy until you are. See for yourself what people have to say about us.",
+            "reviews": []
+        },
+        {
+            "blockType": "gotQuestions",
+            "title": "Need help?",
+            "subtitle": "Call our dedicated sales and support team",
+            "content": "We’re open Monday to Friday, 8:30am-5pm,  \r\nand Saturday 9am-1pm AEDT",
+            "phone": "1300 020 001",
+            "cta": null
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+import { GenerateSeo as GenerateSeo_d6eee3b9ad4a43885b7bb9819b64eb71 } from '../../../components/GenerateSeo'
+import { VercelBlobClientUploadHandler as VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e } from '@payloadcms/storage-vercel-blob/client'
+import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
+
+/** @type import('payload').ImportMap */
+export const importMap = {
+  "/components/GenerateSeo#GenerateSeo": GenerateSeo_d6eee3b9ad4a43885b7bb9819b64eb71,
+  "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler": VercelBlobClientUploadHandler_16c82c5e25f430251a3e3ba57219ff4e,
+  "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
+}
