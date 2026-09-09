@@ -163,12 +163,23 @@ export default function InfoPage() {
         <h3 style={{ marginTop: 24 }}>Set it up in Claude Desktop</h3>
         <ol className="steps">
           <li>
+            <b>Generate an API key</b>
+            <span className="d">
+              in{' '}
+              <a href="/admin/collections/payload-mcp-api-keys?depth=1&amp;limit=10">
+                /admin → API Keys
+              </a>
+              , create a new one, enable it, tick the scopes you want, save, then copy the key —
+              Payload only shows it once
+            </span>
+          </li>
+          <li>
             <b>Open your Claude Desktop config</b>
             <span className="d">Settings → Developer → Edit Config</span>
           </li>
           <li>
             <b>Add the Titan server</b>
-            <span className="d">paste the block below, keeping any other servers already there</span>
+            <span className="d">paste the block below, keeping any other servers already there, and swap in your key</span>
           </li>
           <li>
             <b>Restart Claude Desktop fully</b>
@@ -190,7 +201,7 @@ export default function InfoPage() {
         "mcp-remote",
         "https://payload-cms-rho-lake.vercel.app/api/mcp",
         "--header",
-        "Authorization: Bearer <ask us for the current key>"
+        "Authorization: Bearer <your generated API key>"
       ]
     }
   }
