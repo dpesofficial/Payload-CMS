@@ -15,6 +15,14 @@ export default function InfoPage() {
         You said you were exploring Payload CMS. We ran the compatibility check ourselves — this
         page is the live record of what was built, kept up to date as we add to it.
       </p>
+
+      <a className="callout mcp-highlight" href="#mcp-edit">
+        <p>
+          <b>New: edit this site by talking to Claude.</b> No CMS login required — Claude reads
+          and updates the live content directly over MCP. See how it works below ↓
+        </p>
+      </a>
+
       <div className="cta-row">
         <a className="primary" href="/">
           View the live site
@@ -130,7 +138,7 @@ export default function InfoPage() {
         </p>
       </section>
 
-      <section className="block">
+      <section className="block" id="mcp-edit">
         <p className="eyebrow">Edit the site from Claude</p>
         <div className="rule" />
         <h2>No CMS login required</h2>
@@ -201,7 +209,7 @@ export default function InfoPage() {
 
         <div className="callout">
           <p>
-            <b>Before this goes in front of a client unsupervised.</b> Writes through chat have no
+            <b>Before this runs unsupervised on a live site.</b> Writes through chat have no
             preview and no approval step. Fine for a demo, a real risk on a live site. Production
             should scope reads freely but gate writes behind draft status, so Claude proposes and a
             person publishes.
