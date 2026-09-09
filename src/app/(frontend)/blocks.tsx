@@ -1,12 +1,13 @@
 import React from 'react'
 import Hero from './Hero'
+import { safeHref } from '@/lib/safeHref'
 
 const img = (v: any): string | undefined =>
   typeof v === 'object' && v?.url ? v.url : undefined
 
 const Cta = ({ link, className }: { link?: any; className: string }) =>
   link?.label ? (
-    <a className={className} href={link.url || '#quote'}>
+    <a className={className} href={safeHref(link.url) === '#' ? '#quote' : safeHref(link.url)}>
       {link.label}
     </a>
   ) : null

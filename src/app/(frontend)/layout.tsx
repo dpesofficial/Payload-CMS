@@ -1,6 +1,7 @@
 import React from 'react'
 import config from '@payload-config'
 import { getPayload } from 'payload'
+import { safeHref } from '@/lib/safeHref'
 import './globals.css'
 
 export const metadata = {
@@ -20,7 +21,9 @@ export default async function FrontendLayout({ children }: { children: React.Rea
         {s?.showDemoBar !== false && (
           <div className="demo-flag">
             {s?.demoBarText || 'Proof of concept by WP Creative · content served from Payload CMS'} ·{' '}
-            <a href="/admin">open the CMS</a> · <a href="/llms.txt">/llms.txt</a>
+            <a href="/admin" target="_blank" rel="noopener noreferrer">CMS</a> ·{' '}
+            <a href="/llms.txt" target="_blank" rel="noopener noreferrer">llms</a> ·{' '}
+            <a href="/info" target="_blank" rel="noopener noreferrer">Info</a>
           </div>
         )}
 
@@ -34,7 +37,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
           </a>
           <nav>
             {(s?.nav ?? []).map((item: any, i: number) => (
-              <a key={i} href={item.url || '#'}>
+              <a key={i} href={safeHref(item.url)}>
                 {item.label}
               </a>
             ))}
@@ -46,7 +49,7 @@ export default async function FrontendLayout({ children }: { children: React.Rea
               </a>
             )}
             {s?.headerCta?.label && (
-              <a className="header-cta" href={s.headerCta.url || '#quote'}>
+              <a className="header-cta" href={safeHref(s.headerCta.url) === '#' ? '#quote' : safeHref(s.headerCta.url)}>
                 {s.headerCta.label}
               </a>
             )}

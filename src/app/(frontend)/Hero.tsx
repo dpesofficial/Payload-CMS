@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useCallback, useEffect, useState } from 'react'
+import { safeHref } from '@/lib/safeHref'
 
 type Slide = {
   title?: string
@@ -67,12 +68,12 @@ export default function Hero({
             {s.subtitle && <p>{s.subtitle}</p>}
             <div className="cta_wrap">
               {s.enquire?.label && (
-                <a className="btn_primary" href={s.enquire.url || '#quote'}>
+                <a className="btn_primary" href={safeHref(s.enquire.url) === '#' ? '#quote' : safeHref(s.enquire.url)}>
                   {s.enquire.label}
                 </a>
               )}
               {s.learnMore?.label && (
-                <a className="btn_secondary is--outline" href={s.learnMore.url || '#'}>
+                <a className="btn_secondary is--outline" href={safeHref(s.learnMore.url)}>
                   {s.learnMore.label}
                 </a>
               )}
