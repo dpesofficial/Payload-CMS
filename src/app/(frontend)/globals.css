@@ -335,6 +335,7 @@ footer.site-footer a { color: rgba(255,255,255,0.8); }
 }
 
 @media (max-width: 767px) {
+  .site-header .header-phone { display: none; }
   .journey h2 { font-size: 32px; line-height: 40px; }
   .hero_parent-item { height: 615px; background-position: center; }
   .hero_child { top: 150px; }
@@ -346,6 +347,6 @@ footer.site-footer a { color: rgba(255,255,255,0.8); }
 
 @media (max-width: 900px) {
   .two-col .row { grid-template-columns: 1fr; gap: 30px; }
-  .two-col .row.flip .copy { order: 0; }
+  .two-col .row.flip .copy { order: 0; margin-top: 20px; }
   section { padding: 60px 0; }
 }

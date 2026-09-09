@@ -5,7 +5,6 @@
       <stop offset="1" stop-color="#0B76C6"/>
     </linearGradient>
   </defs>
-  <circle cx="128" cy="128" r="128" fill="#EFF6FB"/>
   <!-- saw blade behind -->
   <g fill="#FFFFFF" stroke="#9CD5F7" stroke-width="6">
     <circle cx="176" cy="88" r="30"/>
