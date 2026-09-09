@@ -13,7 +13,14 @@ import config from '@payload-config'
 const dir = path.dirname(fileURLToPath(import.meta.url))
 const data = JSON.parse(fs.readFileSync(path.join(dir, 'wp-export.json'), 'utf8'))
 
-const ADMIN = { email: 'demo@wpcreative.com.au', password: 'TitanDemo2026!' }
+// Kept out of the repo: set SEED_ADMIN_PASSWORD before seeding. Falls back to
+// a random password (printed once) so a public repo never ships a working login.
+const ADMIN = {
+  email: process.env.SEED_ADMIN_EMAIL || 'demo@wpcreative.com.au',
+  password:
+    process.env.SEED_ADMIN_PASSWORD ||
+    `titan-${Math.random().toString(36).slice(2, 10)}-${Math.random().toString(36).slice(2, 6)}`,
+}
 
 // Trustindex renders reviews client-side, so there is nothing in the database
 // to migrate. Clearly-labelled samples; a real build syncs the Google Business

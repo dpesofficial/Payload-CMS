@@ -34,7 +34,19 @@ npm run dev
 
 Front end at http://localhost:3000, CMS at http://localhost:3000/admin.
 
-Demo login: `demo@wpcreative.com.au` / `TitanDemo2026!`
+Demo login: `demo@wpcreative.com.au`. Set the password when you seed:
+
+```bash
+SEED_ADMIN_PASSWORD=choose-something npm run seed
+```
+
+On Windows PowerShell:
+
+```powershell
+$env:SEED_ADMIN_PASSWORD="choose-something"; npm run seed
+```
+
+With no password set, the seed generates a random one and prints it once.
 
 ### Re-importing from WordPress
 

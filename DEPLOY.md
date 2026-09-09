@@ -18,7 +18,7 @@ just need credentials:
 ## 1. Turso database
 
 ```bash
-npm i -g @tursodatabase/cli
+npm i -g turso
 turso auth signup
 turso db create titan-demo
 turso db show titan-demo --url        # -> libsql://...
@@ -71,10 +71,14 @@ Then restore your local `.env` so local dev keeps using SQLite.
 ## 6. Check it
 
 - `/` renders the homepage
-- `/admin` logs in with `demo@wpcreative.com.au` / `TitanDemo2026!`
+- `/admin` logs in with `demo@wpcreative.com.au` and the password you set via
+  `SEED_ADMIN_PASSWORD` when seeding
 - `/llms.txt` returns the machine-readable summary
 
-**Change the demo password before sending the link to anyone.**
+**This repo is public.** No secrets are committed (`.env` is ignored) and the
+admin password is never in source, but the client content and build are
+visible. Set a real `SEED_ADMIN_PASSWORD` so the live CMS cannot be edited by
+anyone who finds the URL.
 
 ---
 
