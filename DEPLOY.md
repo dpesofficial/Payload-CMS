@@ -17,13 +17,15 @@ just need credentials:
 
 ## 1. Turso database
 
-```bash
-npm i -g turso
-turso auth signup
-turso db create titan-demo
-turso db show titan-demo --url        # -> libsql://...
-turso db tokens create titan-demo     # -> the auth token
-```
+Use the dashboard at https://turso.tech — the `turso` npm package is only the
+local SQL shell, not the cloud CLI.
+
+1. Sign up (GitHub login is fine)
+2. Create a database, name it `titan-demo`
+3. From the database page, copy the **connection URL** (`libsql://...`)
+4. Create a **database token** and copy it
+
+Keep both values; they become `DATABASE_URI` and `DATABASE_AUTH_TOKEN`.
 
 ## 2. Push the code to GitHub
 
