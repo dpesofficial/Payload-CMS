@@ -5,6 +5,7 @@ import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import sharp from 'sharp'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
+import { mcpPlugin } from '@payloadcms/plugin-mcp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
@@ -39,6 +40,27 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
+    // Lets Claude read and edit site content over MCP at POST /api/mcp.
+    mcpPlugin({
+      collections: {
+        pages: {
+          description: 'Website pages. Content is an ordered list of sections (blocks).',
+          // Deletion stays off: an assistant should never be able to remove a
+          // live page. Everything else an editor does, Claude can do.
+          enabled: { find: true, create: true, update: true, delete: false },
+        },
+        media: {
+          description: 'Images and files used across the site.',
+          enabled: { find: true },
+        },
+      },
+      globals: {
+        'site-settings': {
+          description: 'Header navigation, footer, phone number and assistant copy.',
+          enabled: { find: true, update: true },
+        },
+      },
+    }),
     // Vercel's filesystem is read-only, so uploads go to Blob storage there.
     // Locally the token is absent and Payload keeps using public/media.
     vercelBlobStorage({
