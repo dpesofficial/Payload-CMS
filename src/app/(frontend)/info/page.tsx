@@ -27,7 +27,7 @@ export default function InfoPage() {
         <a className="primary" href="/">
           View the live site
         </a>
-        <a className="ghost" href="/admin">
+        <a className="ghost" href="/admin" target="_blank" rel="noopener noreferrer">
           Open the CMS
         </a>
       </div>

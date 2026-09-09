@@ -25,11 +25,13 @@ export default async function FrontendLayout({ children }: { children: React.Rea
         )}
 
         <header className="site-header">
-          {url(s?.logo) ? (
-            <img className="brand-logo" src={url(s.logo)} alt={s?.brand || 'Titan'} />
-          ) : (
-            <span className="brand">{s?.brand || 'Titan'}</span>
-          )}
+          <a href="/" aria-label="Home">
+            {url(s?.logo) ? (
+              <img className="brand-logo" src={url(s.logo)} alt={s?.brand || 'Titan'} />
+            ) : (
+              <span className="brand">{s?.brand || 'Titan'}</span>
+            )}
+          </a>
           <nav>
             {(s?.nav ?? []).map((item: any, i: number) => (
               <a key={i} href={item.url || '#'}>
