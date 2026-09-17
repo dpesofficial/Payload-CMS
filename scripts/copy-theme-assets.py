@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Copies every asset referenced by the theme stylesheets into public/theme/.
+Copies every asset referenced by the theme stylesheets into public/_static/.
 
 The theme CSS pulls in decorative images by relative path (menu carets, icons,
 background textures). Missing any of them shows up as an invisible element
@@ -12,13 +12,13 @@ import re
 import shutil
 
 SRC = 'C:/laragon/www/titan/wp-content/themes/titan-shutters/assets'
-DST = 'public/theme'
+DST = 'public/_static'
 CSS_FILES = [
-    'public/theme/css/custom.css',
-    'public/theme/css/style.css',
-    'public/theme/css/wp-head-before.css',
-    'public/theme/css/wp-head-after.css',
-    'public/theme/css/slick/slick-theme.css',
+    'public/_static/css/custom.css',
+    'public/_static/css/style.css',
+    'public/_static/css/wp-head-before.css',
+    'public/_static/css/wp-head-after.css',
+    'public/_static/css/slick/slick-theme.css',
 ]
 
 refs = set()

@@ -27,8 +27,8 @@ export default function ClonePage() {
       <div dangerouslySetInnerHTML={{ __html: markup }} />
 
       {/* Theme behaviours: sliders, marquee, menu. Order matters. */}
-      <Script src="/theme/js/jquery/jquery-3.7.1.min.js" strategy="afterInteractive" />
-      <Script src="/theme/js/slick/slick.min.js" strategy="afterInteractive" />
+      <Script src="/_static/js/jquery/jquery-3.7.1.min.js" strategy="afterInteractive" />
+      <Script src="/_static/js/slick/slick.min.js" strategy="afterInteractive" />
       <Script
         src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"
         strategy="afterInteractive"
@@ -40,7 +40,7 @@ export default function ClonePage() {
         src="https://unpkg.com/@dotlottie/player-component@1.4.2/dist/dotlottie-player.js"
         strategy="afterInteractive"
       />
-      <Script src="/theme/js/final.js" strategy="afterInteractive" />
+      <Script src="/_static/js/final.js" strategy="afterInteractive" />
       {/* Dynamics CRM form loader, same as the live site. It will not render a
           working form off the allow-listed domain, which matches the reference
           rebuild's behaviour exactly. */}

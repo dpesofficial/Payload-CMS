@@ -55,8 +55,8 @@ for _fname, _ids in (('wp-head-before.css', CSS_BEFORE), ('wp-head-after.css', C
     _css = '\n'.join(_blocks.get(i, '') for i in _ids)
     _css = re.sub(
         r'https?://(?:www\.)?titanshutters\.com\.au/wp-content/themes/titan-shutters/assets/',
-        '/theme/', _css)
-    io.open(os.path.join('public', 'theme', 'css', _fname), 'w', encoding='utf-8').write(_css)
+        '/_static/', _css)
+    io.open(os.path.join('public', '_static', 'css', _fname), 'w', encoding='utf-8').write(_css)
     print('  + %s (%.1f KB)' % (_fname, len(_css) / 1024))
 
 # --- unwrap lazy-loaded <img>: the lazyload plugin is not running here.
@@ -110,7 +110,7 @@ doc = re.sub(r'(src|href)="/wp-content/', r'\1="https://www.titanshutters.com.au
 # --- point theme assets at our local copies ---
 doc = re.sub(
     r'https?://(?:www\.)?titanshutters\.com\.au/wp-content/themes/titan-shutters/assets/',
-    '/theme/',
+    '/_static/',
     doc,
 )
 
@@ -135,6 +135,17 @@ def _relink(m):
     return 'href="%s"' % path
 
 doc = re.sub(r'href="(https?://(?:www\.)?titanshutters\.com\.au[^"]*)"', _relink, doc)
+
+# --- The review logo carries width="452", which the browser treats as the
+#     specified width and then clamps to max-width:226px, so at mobile widths
+#     it pushes the second column off screen. Dropping the attributes lets the
+#     CSS height:71px drive the width from the aspect ratio, as on the
+#     reference rebuild. ---
+def _unsize(m):
+    return re.sub(r'\s(?:width|height)="\d+"', '', m.group(0))
+
+
+doc = re.sub(r'<img[^>]*class="g-logo"[^>]*>', _unsize, doc)
 
 # --- serve the media ourselves rather than hot-linking the client's live site.
 #     scripts/fetch-uploads.py mirrors these into public/wp-content/uploads/. ---

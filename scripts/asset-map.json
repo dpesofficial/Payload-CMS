@@ -1,0 +1,33 @@
+{
+  "buildId": "37aa9d154fb5edb32ca969",
+  "stylesheets": [
+    {
+      "source": "wp-head-before.css",
+      "url": "/_static/css/5720c2a457d986c2.css"
+    },
+    {
+      "source": "style.css",
+      "url": "/_static/css/13bb53a3931fcae2.css"
+    },
+    {
+      "source": "slick/slick.css",
+      "url": "/_static/css/3c5f5751a78f6c6b.css"
+    },
+    {
+      "source": "bootstrap/bootstrap.min.css",
+      "url": "/_static/css/b0a21045f42b8884.css"
+    },
+    {
+      "source": "slick/slick-theme.css",
+      "url": "/_static/css/239a09b17a995177.css"
+    },
+    {
+      "source": "custom.css",
+      "url": "/_static/css/998339c577280eeb.css"
+    },
+    {
+      "source": "wp-head-after.css",
+      "url": "/_static/css/4f7d7c728f5e9141.css"
+    }
+  ]
+}
