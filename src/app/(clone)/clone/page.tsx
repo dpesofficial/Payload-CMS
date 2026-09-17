@@ -2,6 +2,9 @@ import fs from 'fs'
 import path from 'path'
 import Script from 'next/script'
 
+const PAGE_TITLE =
+  'Premium Roller Shutters Melbourne | Australian Made | Titan Shutters'
+
 /**
  * Static clone of the Titan Shutters homepage.
  *
@@ -43,6 +46,16 @@ export default function ClonePage() {
         src="https://cxppusa1formui01cdnsa01-endpoint.azureedge.net/oce/FormLoader/FormLoader.bundle.js"
         strategy="afterInteractive"
       />
+      {/* The Dynamics loader rewrites document.title to the form's name.
+          Keep the real page title. */}
+      <Script id="keep-title" strategy="afterInteractive">
+        {`(function(){var t=${JSON.stringify(PAGE_TITLE)};
+          var n=0,i=setInterval(function(){
+            if(document.title!==t)document.title=t;
+            if(++n>40)clearInterval(i);
+          },250);
+          document.title=t;})();`}
+      </Script>
     </>
   )
 }
