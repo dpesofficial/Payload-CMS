@@ -35,10 +35,26 @@ footer = grab(r'<div[^>]*class="footer[^"]*".*?</div>\s*(?=<script|\s*</body>)',
 
 doc = header + '\n' + main + '\n' + footer
 
-# --- unwrap lazy-loaded <img>: the lazyload plugin is not running here ---
-doc = re.sub(r'src="data:image/svg\+xml[^"]*"\s*data-lazy-src="([^"]+)"', r'src="\1"', doc)
-doc = re.sub(r'data-lazy-src="([^"]+)"', r'src="\1"', doc)
-doc = re.sub(r'data-lazy-srcset="([^"]+)"', r'srcset="\1"', doc)
+# --- unwrap lazy-loaded <img>: the lazyload plugin is not running here.
+#     Handled per tag, because attribute order varies and a naive rename leaves
+#     a duplicate src, in which case the browser keeps the placeholder. ---
+def _unlazy(m):
+    tag = m.group(0)
+    if 'data-lazy-src' not in tag:
+        return tag
+    real = re.search(r'data-lazy-src="([^"]+)"', tag)
+    rset = re.search(r'data-lazy-srcset="([^"]+)"', tag)
+    tag = re.sub(r'\ssrc="[^"]*"', '', tag)
+    tag = re.sub(r'\ssrcset="[^"]*"', '', tag)
+    tag = re.sub(r'\sdata-lazy-src="[^"]*"', '', tag)
+    tag = re.sub(r'\sdata-lazy-srcset="[^"]*"', '', tag)
+    extra = ' src="%s"' % real.group(1) if real else ''
+    if rset:
+        extra += ' srcset="%s"' % rset.group(1)
+    return tag[:-1].rstrip() + extra + '>'
+
+
+doc = re.sub(r'<img\b[^>]*>', _unlazy, doc)
 doc = re.sub(r'\ssrcset="data:image[^"]*"', '', doc)
 doc = doc.replace('class="lazyload"', '').replace(' lazyloaded', '')
 
