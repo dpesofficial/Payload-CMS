@@ -33,9 +33,11 @@ export default function ClonePage() {
         src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.4/gsap.min.js"
         strategy="afterInteractive"
       />
+      {/* v1 of the player, because the theme's icons are plain Lottie JSON and
+          v2 only accepts .lottie bundles ("No animations found in manifest").
+          v1 ships a classic script, not an ES module. */}
       <Script
-        src="https://unpkg.com/@dotlottie/player-component@1.5.3/dist/dotlottie-player.mjs"
-        type="module"
+        src="https://unpkg.com/@dotlottie/player-component@1.4.2/dist/dotlottie-player.js"
         strategy="afterInteractive"
       />
       <Script src="/theme/js/final.js" strategy="afterInteractive" />

@@ -11,6 +11,7 @@ Usage:
 """
 import io
 import re
+import os
 import sys
 
 src = sys.argv[1] if len(sys.argv) > 1 else '/tmp/prod-home.html'
@@ -34,6 +35,29 @@ main = grab(r'<main[^>]*class="[^"]*flexible-page[^"]*".*?</main>', 'main')
 footer = grab(r'<div[^>]*class="footer[^"]*".*?</div>\s*(?=<script|\s*</body>)', 'footer')
 
 doc = header + '\n' + main + '\n' + footer
+
+# --- The WordPress block CSS (gallery layout, image blocks) and the site's
+#     Additional CSS live in inline <style> blocks in <head>. Without them the
+#     footer badge gallery collapses and the menu carets disappear. They are
+#     split by cascade position: some load before the theme CSS, some after. ---
+head_html = h[:h.find('</head>')]
+CSS_BEFORE = ['wp-img-auto-sizes-contain-inline-css', 'wp-emoji-styles-inline-css',
+              'wp-block-library-inline-css', 'wp-block-gallery-inline-css',
+              'wp-block-heading-inline-css', 'wp-block-image-inline-css',
+              'classic-theme-styles-inline-css', 'global-styles-inline-css']
+CSS_AFTER = ['wp-custom-css', 'core-block-supports-inline-css']
+
+_blocks = {}
+for _m in re.finditer(r'<style[^>]*id=["\']([^"\']+)["\'][^>]*>(.*?)</style>', head_html, re.S):
+    _blocks[_m.group(1)] = _m.group(2)
+
+for _fname, _ids in (('wp-head-before.css', CSS_BEFORE), ('wp-head-after.css', CSS_AFTER)):
+    _css = '\n'.join(_blocks.get(i, '') for i in _ids)
+    _css = re.sub(
+        r'https?://(?:www\.)?titanshutters\.com\.au/wp-content/themes/titan-shutters/assets/',
+        '/theme/', _css)
+    io.open(os.path.join('public', 'theme', 'css', _fname), 'w', encoding='utf-8').write(_css)
+    print('  + %s (%.1f KB)' % (_fname, len(_css) / 1024))
 
 # --- unwrap lazy-loaded <img>: the lazyload plugin is not running here.
 #     Handled per tag, because attribute order varies and a naive rename leaves
@@ -100,6 +124,22 @@ doc = re.sub(r'\snitro-[^=]*="[^"]*"', '', doc)
 # --- the Dynamics CRM form container is hidden until its loader runs; reveal
 #     it so the section behaves exactly as it does on the reference rebuild ---
 doc = doc.replace('class="dynamic-form" style="display: none;"', 'class="dynamic-form"')
+
+
+# --- point navigation at relative paths instead of the client's live site ---
+def _relink(m):
+    url = m.group(1)
+    if '/wp-content/' in url:          # assets must stay absolute
+        return m.group(0)
+    path = re.sub(r'^https?://(?:www\.)?titanshutters\.com\.au', '', url) or '/'
+    return 'href="%s"' % path
+
+doc = re.sub(r'href="(https?://(?:www\.)?titanshutters\.com\.au[^"]*)"', _relink, doc)
+
+# --- serve the media ourselves rather than hot-linking the client's live site.
+#     scripts/fetch-uploads.py mirrors these into public/wp-content/uploads/. ---
+doc = re.sub(r'https?://(?:www\.)?titanshutters\.com\.au/wp-content/uploads/',
+             '/wp-content/uploads/', doc)
 
 io.open(out, 'w', encoding='utf-8').write(doc)
 
