@@ -1,0 +1,102 @@
+/* Small additions on top of the shared globals.css for the static clone page */
+
+.clone-header .header-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.clone-header .header-phone svg {
+  flex-shrink: 0;
+}
+.clone-header nav a .chev {
+  font-size: 10px;
+  margin-left: 5px;
+  opacity: 0.7;
+}
+
+.hero_crests.with-rating {
+  align-items: flex-end;
+  gap: 14px;
+}
+.rating-badge {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.1;
+}
+.rating-badge .n { font-size: 20px; font-weight: 600; }
+.rating-badge .stars { color: #ffb400; font-size: 12px; letter-spacing: 1px; margin: 2px 0; }
+.rating-badge .c { font-size: 9px; color: var(--grey-800); }
+
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tiles a.tile {
+  position: relative;
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 320px;
+  background-size: cover;
+  background-position: center;
+  text-decoration: none;
+}
+.tiles a.tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.35) 100%);
+}
+.tiles a.tile .tile-cta {
+  position: absolute;
+  left: 50%;
+  bottom: 26px;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.reviews-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.review-card-4 {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 22px;
+}
+.review-card-4 .who-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.review-card-4 .avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.review-card-4 .who b { display: block; font-size: 14px; }
+.review-card-4 .who span { font-size: 12px; color: rgba(255, 255, 255, 0.55); }
+.review-card-4 .stars { color: #ffb400; font-size: 13px; margin-bottom: 10px; }
+.review-card-4 p { font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.85); margin: 0; }
+.review-card-4 .tag { font-size: 11px; color: rgba(255, 255, 255, 0.4); margin-top: 12px; }
+.see-more-wrap { text-align: center; margin-top: 30px; }
+.see-more-wrap .btn_secondary { min-width: 200px; }
+
+@media (max-width: 900px) {
+  .tiles { grid-template-columns: 1fr; }
+  .reviews-grid-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .reviews-grid-4 { grid-template-columns: 1fr; }
+}
