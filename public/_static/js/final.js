@@ -2891,7 +2891,7 @@ jQuery(document).ready(function ($) {
 window.addEventListener('load', () => {
   setTimeout(() => {
     const oldUrl = "https://cdn-icons-png.flaticon.com/512/1828/1828884.png";
-    const newUrl = "https://www.titanshutters.com.au/wp-content/uploads/2025/11/titan-star.svg";
+    const newUrl = "/wp-content/uploads/2025/11/titan-star.svg";
 
     document.querySelectorAll(`img[src="${oldUrl}"]`).forEach(img => {
       img.src = newUrl;
