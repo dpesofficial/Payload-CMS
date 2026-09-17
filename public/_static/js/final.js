@@ -441,27 +441,35 @@ jQuery(document).ready(function ($) {
 
     // 2nd level menu
 
-    if ($(window).innerWidth() < 1081) {
-      // $('#primary-menu > li.menu-item-has-children').click(function(event) {
-      $(".toggle-caret").click(function (event) {
-        event.preventDefault();
-        event.stopPropagation(); // Stop propagation to prevent triggering click events on parent elements
-        var $this = $(this).parent().parent();
+    // Static-clone patch: this used to be wrapped in a one-off
+    // `if ($(window).innerWidth() < 1081)` check, so the width at page load
+    // decided forever whether the caret worked. Opening the page wide and then
+    // narrowing it (a browser resize, or switching on a device toolbar) left
+    // the carets inert. Bind unconditionally and test the width per click.
+    $(".toggle-caret").click(function (event) {
+      if ($(window).innerWidth() >= 1081) {
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation(); // Stop propagation to prevent triggering click events on parent elements
+      var $this = $(this).parent().parent();
 
-        if ($this.hasClass("active")) {
-          $this.removeClass("active");
-          $("#primary-menu > li").show();
-        } else {
-          $("#primary-menu > li").removeClass("active").hide();
-          $("#primary-menu > li.hide-desktop").show();
-          $this.addClass("active").show();
-        }
-      });
+      if ($this.hasClass("active")) {
+        $this.removeClass("active");
+        $("#primary-menu > li").show();
+      } else {
+        $("#primary-menu > li").removeClass("active").hide();
+        $("#primary-menu > li.hide-desktop").show();
+        $this.addClass("active").show();
+      }
+    });
 
-      $("#primary-menu > li").click(function (event) {
-        event.stopPropagation(); // Prevents hiding/showing when clicking on sub-items
-      });
-    }
+    $("#primary-menu > li").click(function (event) {
+      if ($(window).innerWidth() >= 1081) {
+        return;
+      }
+      event.stopPropagation(); // Prevents hiding/showing when clicking on sub-items
+    });
   }
 
   function debounce(func, wait, immediate) {
